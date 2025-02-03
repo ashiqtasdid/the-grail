@@ -5,11 +5,13 @@ import { getPostBySlug } from "@/lib/mdx";
 import MdxRenderer from "@/components/MdxRenderer";
 import { Metadata } from "next";
 
+// Update the props so that params is a Promise resolving to an object with slug.
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function Page({ params}: PageProps) {
+export default async function Page({ params }: PageProps) {
+  // Await the asynchronous params
   const { slug } = await params;
 
   try {
@@ -43,12 +45,13 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+// Update generateMetadata to treat params as a Promise and fix the template literal syntax.
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
 
   if (!post || !post.frontMatter?.title) {
