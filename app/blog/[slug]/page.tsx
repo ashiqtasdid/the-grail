@@ -7,10 +7,9 @@ import { Metadata } from "next";
 
 interface PageProps {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default async function Page({ params}: PageProps) {
   const { slug } = params;
 
   try {
