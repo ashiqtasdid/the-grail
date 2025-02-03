@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CountdownTimer from "./CountdownTimer";
 import Link from "next/link";
 import {
@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { AlignLeftIcon } from "lucide-react";
-import Image from "next/image";
 
 const Nav = () => {
   const navItems = [

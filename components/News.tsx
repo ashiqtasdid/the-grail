@@ -3,7 +3,6 @@ import matter from "gray-matter";
 import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
-import BlogList from "@/app/blog/page";
 
 interface Post {
   slug: string;
