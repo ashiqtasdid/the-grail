@@ -11,7 +11,9 @@ interface PageProps {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const { slug } = params;
   const post = await getPostBySlug(slug);
 
