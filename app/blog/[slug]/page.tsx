@@ -6,11 +6,11 @@ import MdxRenderer from "@/components/MdxRenderer";
 import { Metadata } from "next";
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function Page({ params}: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
 
   try {
     const post = await getPostBySlug(slug);
