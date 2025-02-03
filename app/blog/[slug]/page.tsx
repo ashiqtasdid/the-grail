@@ -7,34 +7,10 @@ import { Metadata } from "next";
 
 interface PageProps {
   params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
-
-  if (!post || !post.frontMatter?.title) {
-    return {
-      title: "Blog - The Grail",
-      description:
-        "Get latest news and updates from The Grail. Stay up to date with the latest announcements.",
-    };
-  }
-
-  return {
-    title: `${post.frontMatter.title} - The Grail`,
-    description:
-      post.frontMatter.description ||
-      "Get latest news and updates from The Grail. Stay up to date with the latest announcements.",
-  };
-}
-
-export default async function BlogPost(props: PageProps) {
-  const params = await props.params;
+export default async function Page({ params, searchParams }: PageProps) {
   const { slug } = params;
 
   try {
@@ -66,4 +42,28 @@ export async function generateStaticParams() {
     .map((name) => name.replace(/\.mdx$/, ""));
 
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = params;
+  const post = await getPostBySlug(slug);
+
+  if (!post || !post.frontMatter?.title) {
+    return {
+      title: "Blog - The Grail",
+      description:
+        "Get latest news and updates from The Grail. Stay up to date with the latest announcements.",
+    };
+  }
+
+  return {
+    title: `${post.frontMatter.title} - The Grail`,
+    description:
+      post.frontMatter.description ||
+      "Get latest news and updates from The Grail. Stay up to date with the latest announcements.",
+  };
 }
