@@ -12,6 +12,7 @@ export async function getPostBySlug(slug: string) {
 
   const { content, data } = matter(fileContents);
   const mdxSource = await serialize(content, { scope: data });
+  console.log("Serialized MDX:", mdxSource); // Debug log
 
   return {
     source: mdxSource,

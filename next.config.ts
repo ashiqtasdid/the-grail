@@ -3,11 +3,15 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 };
 
-const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
 });
 
 export default withMDX(nextConfig);
