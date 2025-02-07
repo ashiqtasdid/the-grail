@@ -1,4 +1,4 @@
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const response = await fetch(
       "https://api.mcsrvstat.us/2/mc.hypixel.net",
