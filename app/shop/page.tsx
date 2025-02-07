@@ -1,8 +1,10 @@
-'use client'
+"use client";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -10,10 +12,14 @@ const page = () => {
   }, [router]);
 
   return (
-    <div className="flex text-white items-center justify-center h-screen">
-      <p className="text-lg font-medium">Redirecting...</p>
+    <div className="bg-[#252525]">
+      <Nav />
+      <div className="flex text-white items-center justify-center h-screen">
+        <p className="text-lg font-medium">Redirecting...</p>
+      </div>
+      <Footer />
     </div>
   );
 };
 
-export default page;
+export default Page;
