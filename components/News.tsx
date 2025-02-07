@@ -71,24 +71,30 @@ export default function News() {
       <div className="flex justify-center py-6">
         <div className="grid grid-cols-1 max-w-6xl sm:grid-cols-2 md:grid-cols-3 gap-6 py-6 px-4">
           {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <div className="bg-[#313131] p-6 rounded-xl">
-              <div className="space-y-3">
-                <h1 className="font-bold text-2xl">{post.title}</h1>
-                <p className="font-semibold text-sm text-gray-300">
-                  {post.date}
-                </p>
-                {post.description && (
-                  <p className="text-gray-100">{post.description}</p>
-                )}
-                <Link href={`/blog/${post.slug}`}>
-                  <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl">
-                    Continue Reading
-                  </button>
-                </Link>
+            <div key={post.slug}>
+              <div className="relative p-6 rounded-xl overflow-hidden h-[450px]">
+                <div
+                  className="absolute inset-0 bg-[url('/assets/banner.jpg')] bg-cover bg-center filter blur-md"
+                  aria-hidden="true"
+                />
+                <div className="relative z-10 h-full flex flex-col justify-between space-y-3">
+                  <div>
+                    <h1 className="font-bold text-2xl">{post.title}</h1>
+                    <p className="font-semibold text-sm text-gray-300">
+                      {post.date}
+                    </p>
+                    {post.description && (
+                      <p className="text-gray-100">{post.description}</p>
+                    )}
+                  </div>
+                  <div>
+                    <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl">
+                      Continue Reading
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </Link>
           ))}
         </div>
       </div>

@@ -24,11 +24,6 @@ const Hero = () => {
             ease: "easeInOut",
             repeat: Infinity,
           }}
-          whileHover={{
-            scale: 1.05,
-            rotate: 360,
-            transition: { duration: 1, ease: "easeInOut" },
-          }}
         >
           <Link href="/" className="transition-transform hover:scale-105">
             <Image
