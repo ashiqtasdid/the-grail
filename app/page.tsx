@@ -1,19 +1,22 @@
+
+import React from "react";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
 import News from "@/components/News";
 import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
 
 export default function Home() {
+
   return (
     <main>
-      <Nav/>
-      <Hero/>
-      <News/>
+      <Nav />
+      <Hero />
+      <News />
       <div className="bg-[#252525] text-white">
-      <FAQ/>
+        <FAQ />
       </div>
-      <Footer/>
+      <Footer />
     </main>
   );
 }

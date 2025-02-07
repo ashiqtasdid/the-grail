@@ -9,7 +9,7 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2025-02-5'); // Set your target date here
+    const targetDate = new Date('2025-02-28'); // Set your target date here
 
     const calculateTimeLeft = () => {
       const difference = +targetDate - +new Date();

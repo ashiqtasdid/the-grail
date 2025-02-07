@@ -1,6 +1,47 @@
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import { Metadata } from "next";
 import React from "react";
+
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | The Grail',
+    default: 'The Grail - Under Construction',
+  },
+  description: 'Our website is currently under construction. We are working hard to bring you a better experience. Stay tuned!',
+  openGraph: {
+    title: 'The Grail - Under Construction',
+    description: 'Our website is currently under construction. We are working hard to bring you a better experience. Stay tuned!',
+    url: 'https://thegrail.vip/under-construction',
+    siteName: 'The Grail',
+    images: [
+      {
+        url: '/assets/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'The Grail Under Construction',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The Grail - Under Construction',
+    description: 'Our website is currently under construction. We are working hard to bring you a better experience. Stay tuned!',
+    images: ['/assets/og-image.jpg'],
+    site: '@TheGrail',
+    creator: '@TheGrail',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
+  robots: 'noindex, nofollow',
+  keywords: 'under construction, website maintenance, The Grail',
+  metadataBase: new URL('https://thegrail.vip'),
+};
 
 const page = () => {
   return (

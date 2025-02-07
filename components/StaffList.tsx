@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaDiscord as DiscordIcon,
   FaTwitter as TwitterIcon,
@@ -82,9 +82,35 @@ const STAFF_MEMBERS: Staff[] = [
 ];
 
 const StaffList = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const sortedStaff = [...STAFF_MEMBERS].sort(
     (a, b) => getRoleWeight(a.role) - getRoleWeight(b.role)
   );
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex bg-[#252525] justify-center items-center min-h-[600px]">
+        <div className="grid grid-cols-3 gap-1">
+          {[...Array(9)].map((_, i) => (
+            <div
+              key={i}
+              className={`w-10 h-10 bg-red-500 animate-pulse`}
+              style={{
+                animation: `pulse 1.5s ease-in-out ${i * 0.1}s infinite`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="grid bg-[#252525] grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8 p-8 max-w-[1400px] mx-auto">

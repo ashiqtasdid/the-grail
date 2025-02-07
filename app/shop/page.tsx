@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,23 +13,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | The Grail - Home",
-    default: "The Grail - Home",
+    template: "%s | The Grail Shop",
+    default: "The Grail Shop",
   },
   description:
-    "Welcome to The Grail, your source for the latest news and updates.",
+    "Explore a curated selection of products at The Grail Shop. Find items that suit your style and needs.",
   openGraph: {
-    title: "The Grail",
+    title: "The Grail Shop",
     description:
-      "Welcome to The Grail, your source for the latest news and updates.",
-    url: "https://thegrail.vip",
+      "Explore a curated selection of products at The Grail Shop. Find items that suit your style and needs.",
+    url: "https://thegrail.vip/shop",
     siteName: "The Grail",
     images: [
       {
         url: "/assets/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "The Grail Homepage Banner",
+        alt: "The Grail Shop Banner",
       },
     ],
     locale: "en_US",
@@ -38,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Grail",
+    title: "The Grail Shop",
     description:
-      "Welcome to The Grail, your source for the latest news and updates.",
+      "Explore a curated selection of products at The Grail Shop. Find items that suit your style and needs.",
     images: ["/assets/og-image.jpg"],
     site: "@TheGrail",
     creator: "@TheGrail",
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   robots: "index, follow",
-  keywords: "news, updates, The Grail",
+  keywords: "shop, products, online store, The Grail",
   metadataBase: new URL("https://thegrail.vip"),
 };
 
@@ -62,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-[#252525] antialiased`}
       >
         {children}
       </body>

@@ -1,7 +1,6 @@
-import React from "react";
-import matter from "gray-matter";
-import fs from "fs/promises";
-import path from "path";
+// components/News.tsx
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface Post {
@@ -12,40 +11,53 @@ interface Post {
   description?: string;
 }
 
-export default async function News() {
-  const postsDirectory = path.join(process.cwd(), "posts");
-  const filenames = await fs.readdir(postsDirectory);
+export default function News() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const posts: Post[] = await Promise.all(
-    filenames
-      .filter((name) => name.endsWith(".mdx"))
-      .map(async (name) => {
-        const slug = name.replace(/\.mdx$/, "");
-        const filePath = path.join(postsDirectory, name);
-        const fileContents = await fs.readFile(filePath, "utf8");
-        const { data } = matter(fileContents);
-        return {
-          slug,
-          title: data.title || "Untitled Post",
-          date: data.date || "",
-          author: data.author || "Unknown Author",
-          description: data.description || "",
-        };
-      })
-  );
-
-  // Sort posts by date (most recent first)
-  posts.sort((a, b) => {
-    if (a.date && b.date) {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+  useEffect(() => {
+    async function fetchNews() {
+      try {
+        const res = await fetch("/api/news");
+        if (!res.ok) {
+          throw new Error("Failed to fetch news");
+        }
+        const data: Post[] = await res.json();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      } finally {
+      }
     }
-    return 0;
-  });
+    fetchNews();
+  }, []);
 
-  const latestPosts = posts.slice(0, 3);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex bg-[#252525] justify-center items-center min-h-[600px]">
+        <div className="grid grid-cols-3 gap-1">
+          {[...Array(9)].map((_, i) => (
+            <div
+              key={i}
+              className={`w-10 h-10 bg-red-500 animate-pulse`}
+              style={{
+                animation: `pulse 1.5s ease-in-out ${i * 0.1}s infinite`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
-    // ...existing code...
     <div className="text-white bg-[#252525]">
       <div className="flex justify-center">
         <div className="text-center space-y-2">
@@ -58,8 +70,9 @@ export default async function News() {
       {/* Make posts wrap into responsive columns */}
       <div className="flex justify-center py-6">
         <div className="grid grid-cols-1 max-w-6xl sm:grid-cols-2 md:grid-cols-3 gap-6 py-6 px-4">
-          {latestPosts.map((post) => (
-            <div key={post.slug} className="bg-[#313131]  p-6 rounded-xl">
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+            <div className="bg-[#313131] p-6 rounded-xl">
               <div className="space-y-3">
                 <h1 className="font-bold text-2xl">{post.title}</h1>
                 <p className="font-semibold text-sm text-gray-300">
@@ -68,13 +81,14 @@ export default async function News() {
                 {post.description && (
                   <p className="text-gray-100">{post.description}</p>
                 )}
-                <Link legacyBehavior href={`/blog/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`}>
                   <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl">
                     Continue Reading
                   </button>
                 </Link>
               </div>
             </div>
+          </Link>
           ))}
         </div>
       </div>

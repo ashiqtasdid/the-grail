@@ -15,7 +15,7 @@ const FAQ = () => {
       <div className="relative z-10 mx-auto w-full md:w-3/4 lg:w-2/3">
         <Accordion type="single" collapsible className="space-y-4">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-lg font-semibold text-white transition duration-300 hover:text-cyan-700">
+            <AccordionTrigger className="text-lg font-semibold text-white transition duration-300 hover:text-red-500">
               What is The Grail?
             </AccordionTrigger>
             <AccordionContent className="text-base text-white">
@@ -26,7 +26,7 @@ const FAQ = () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger className="text-lg font-semibold text-white transition duration-300 hover:text-cyan-700">
+            <AccordionTrigger className="text-lg font-semibold text-white transition duration-300 hover:text-red-500">
               How old is it?
             </AccordionTrigger>
             <AccordionContent className="text-base text-white">
@@ -35,7 +35,7 @@ const FAQ = () => {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-lg font-semibold text-white transition duration-300 hover:text-cyan-700">
+            <AccordionTrigger className="text-lg font-semibold text-white transition duration-300 hover:text-red-500">
               What commands does The Grail have?
             </AccordionTrigger>
             <AccordionContent className="text-base text-white">

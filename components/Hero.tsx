@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -17,6 +17,13 @@ const Hero = () => {
       {/* Logo container */}
       <div className="relative z-10 container mx-auto h-full flex justify-center items-center">
         <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
           whileHover={{
             scale: 1.05,
             rotate: 360,

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,7 +11,22 @@ import Link from "next/link";
 
 const Footer = () => {
   const [copied, setCopied] = useState(false);
+  const [playerCount, setPlayerCount] = useState({ current: 0, max: 0 });
   const serverIP = "thegrail.vip";
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch("/api/playercount")
+        .then((res) => res.json())
+        .then((data) => {
+          setPlayerCount({ current: data.current, max: data.max });
+        })
+        .catch((error) => {
+          console.error("Error fetching player count:", error);
+        });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(serverIP);
@@ -22,7 +37,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#252525] text-white py-16">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-left relative">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-left relative">
           {/* Vertical Dividers */}
           <div className="hidden md:block absolute left-1/4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-red-500/20 to-transparent"></div>
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-red-500/20 to-transparent"></div>
@@ -128,7 +143,10 @@ const Footer = () => {
                         Server Online
                       </span>
                     </div>
-                    <span className="text-gray-400">128/1000 Players</span>
+                    <span className="text-gray-400">
+                      {" "}
+                      {playerCount.current}/{playerCount.max} Players
+                    </span>
                   </div>
 
                   {/* Server IP Section */}
@@ -168,12 +186,13 @@ const Footer = () => {
                       <p className="text-white font-medium">North America</p>
                     </div>
                   </div>
-
                   {/* Quick Links */}
                   <div className="flex items-center justify-center space-x-4 pt-4 border-t border-red-500/20">
-                    <button className="text-gray-400 hover:text-white transition-colors">
-                      Discord Support
-                    </button>
+                    <Link href={"https://discord.gg/EC3KUy6x9u"}>
+                      <button className="text-gray-400 hover:text-white transition-colors">
+                        Discord Support
+                      </button>
+                    </Link>
                     <span className="text-gray-600">•</span>
                     <button className="text-gray-400 hover:text-white transition-colors">
                       Server Rules
