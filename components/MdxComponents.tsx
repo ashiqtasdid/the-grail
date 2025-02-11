@@ -1,11 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
-import Image, { ImageProps } from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-
-const CustomImage = (props: ImageProps) => (
-  <Image {...props} className="rounded" />
-);
 
 const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href?: string }) => {
   const { href, children, ...rest } = props;
@@ -34,7 +29,6 @@ const CustomLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement> & { hre
 };
 
 export const mdxComponents: MDXComponents = {
-  img: CustomImage,
   a: CustomLink,
   // Override additional elements if needed (e.g., h1, h2, etc.)
 };

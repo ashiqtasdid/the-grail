@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
   FaDiscord as DiscordIcon,
@@ -120,7 +121,8 @@ const StaffList = () => {
           className="relative rounded-lg p-6 text-center transition-all duration-300 bg-[#252525] hover:bg-[#2a2a2a] group"
         >
           <div className="relative w-48 h-64 mx-auto mb-4 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full  before:clip-path-hexagon before:opacity-0 group-hover:before:opacity-20 transition-all duration-300">
-            <img
+            <Image
+            
               src={getCrafatarUrl(staff.uuid)}
               alt={staff.name}
               className="w-full h-full object-contain clip-path-hexagon transition-transform duration-300 group-hover:scale-105"
