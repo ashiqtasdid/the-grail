@@ -1,4 +1,3 @@
-// app/news/archive/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -62,8 +61,15 @@ export default function ArchivePage() {
       <div className="flex justify-center pb-6">
         <div className="grid grid-cols-1 max-w-6xl sm:grid-cols-2 md:grid-cols-3 gap-6 py-6 px-4">
           {posts.map((post) => (
-            <div key={post.slug} className="bg-[#313131] p-6 rounded-xl">
-              <div className="space-y-3">
+            <div
+              key={post.slug}
+              className="relative p-6 rounded-xl overflow-hidden"
+            >
+              <div
+                className="absolute inset-0 bg-[url('/assets/banner.jpg')] bg-cover bg-center opacity-30"
+                aria-hidden="true"
+              />
+              <div className="relative z-10 space-y-3">
                 <h1 className="font-bold text-2xl">{post.title}</h1>
                 <p className="font-semibold text-sm text-gray-300">
                   {post.date}

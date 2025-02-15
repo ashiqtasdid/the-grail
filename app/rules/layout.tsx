@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,23 +13,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | The Grail",
-    default: "The Grail - Home",
+    template: "%s Rules | The Grail",
+    default: "The Grail Rules",
   },
   description:
-    "Welcome to The Grail, your source for the latest news and updates.",
+    "Follow the rules and regulations of The Grail to ensure a safe and enjoyable experience for all.",
   openGraph: {
-    title: "The Grail",
+    title: "The Grail Rules",
     description:
-      "Welcome to The Grail, your source for the latest news and updates.",
-    url: "https://thegrail.vip",
+    "Follow the rules and regulations of The Grail to ensure a safe and enjoyable experience for all.",
+    url: "https://thegrail.vip/rules",
     siteName: "The Grail",
     images: [
       {
         url: "/assets/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "The Grail Homepage Banner",
+        alt: "The Grail Rules Banner",
       },
     ],
     locale: "en_US",
@@ -38,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Grail",
+    title: "The Grail Rules",
     description:
-      "Welcome to The Grail, your source for the latest news and updates.",
+    "Follow the rules and regulations of The Grail to ensure a safe and enjoyable experience for all.",
     images: ["/assets/og-image.jpg"],
     site: "@TheGrail",
     creator: "@TheGrail",
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   robots: "index, follow",
-  keywords: "news, updates, The Grail",
+  keywords: "rules, grail rules, regulations, The Grail",
   metadataBase: new URL("https://thegrail.vip"),
 };
 
@@ -62,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-[#252525] antialiased`}
       >
         {children}
       </body>
