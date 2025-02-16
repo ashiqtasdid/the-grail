@@ -30,7 +30,8 @@ const ROLE_HIERARCHY: StaffRole[] = [
   "Trial Moderator",
 ];
 
-const getRoleWeight = (role: StaffRole): number => ROLE_HIERARCHY.indexOf(role);
+const getRoleWeight = (role: StaffRole): number =>
+  ROLE_HIERARCHY.indexOf(role);
 
 const getRoleColor = (role: StaffRole): string => {
   switch (role) {
@@ -49,8 +50,10 @@ const getRoleColor = (role: StaffRole): string => {
   }
 };
 
+// Use Crafatar API's full body render for Minecraft skins.
+// Adjust the "scale" value if a larger or smaller image is preferred.
 const getCrafatarUrl = (uuid: string): string =>
-  `https://crafatar.com/renders/body/${uuid}?size=512&overlay=true`;
+  `https://crafatar.com/renders/body/${uuid}?overlay&scale=10`;
 
 const STAFF_MEMBERS: Staff[] = [
   {
@@ -98,11 +101,11 @@ const StaffList = () => {
   if (isLoading) {
     return (
       <div className="flex bg-[#252525] justify-center items-center min-h-[600px]">
-        <div className="grid grid-cols-3 gap-1">
+        <div className="grid grid-cols-3 gap-4">
           {[...Array(9)].map((_, i) => (
             <div
               key={i}
-              className={`w-10 h-10 bg-red-500 animate-pulse`}
+              className="w-16 h-16 bg-gray-700 animate-pulse rounded"
               style={{
                 animation: `pulse 1.5s ease-in-out ${i * 0.1}s infinite`,
               }}
@@ -118,20 +121,24 @@ const StaffList = () => {
       {sortedStaff.map((staff, index) => (
         <div
           key={index}
-          className="relative rounded-lg p-6 text-center transition-all duration-300 bg-[#252525] hover:bg-[#2a2a2a] group"
+          className="relative rounded-lg p-6 text-center transition-all duration-300 bg-[#2d2d2d] hover:bg-[#3a3a3a] group shadow-lg"
         >
-          <div className="relative w-48 h-64 mx-auto mb-4 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full  before:clip-path-hexagon before:opacity-0 group-hover:before:opacity-20 transition-all duration-300">
+          <div className="relative w-48 h-64 mx-auto mb-4">
             <Image
-            
               src={getCrafatarUrl(staff.uuid)}
               alt={staff.name}
-              className="w-full h-full object-contain clip-path-hexagon transition-transform duration-300 group-hover:scale-105"
+              width={192}
+              height={256}
+              className="w-full h-full object-contain rounded transition-transform duration-300 group-hover:scale-110"
             />
           </div>
           <h3 className="text-white text-xl font-bold mb-2">{staff.name}</h3>
           <div
-            className="inline-block px-4 py-1 rounded-full bg-[#C31F1F]/10 border border-[#C31F1F]/20 text-sm font-medium mb-3"
-            style={{ color: getRoleColor(staff.role) }}
+            className="inline-block px-4 py-1 rounded-full border text-sm font-medium mb-3"
+            style={{
+              color: getRoleColor(staff.role),
+              borderColor: getRoleColor(staff.role),
+            }}
           >
             {staff.role}
           </div>
@@ -140,6 +147,8 @@ const StaffList = () => {
               <a
                 href={`https://discord.com/users/${staff.discord}`}
                 className="text-white/70 hover:text-[#C31F1F] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <DiscordIcon className="w-5 h-5" />
               </a>
@@ -148,6 +157,8 @@ const StaffList = () => {
               <a
                 href={`https://twitter.com/${staff.twitter}`}
                 className="text-white/70 hover:text-[#C31F1F] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <TwitterIcon className="w-5 h-5" />
               </a>

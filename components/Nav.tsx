@@ -79,7 +79,7 @@ const Nav = () => {
               </a>
             </li>
           </Link>
-          <Link href={"/under-construction"}>
+          <Link href={"/rules"}>
             <li className="relative group">
               <a className="py-2 px-1 inline-block transition-colors hover:text-white text-gray-100">
                 Rules
@@ -87,7 +87,7 @@ const Nav = () => {
               </a>
             </li>
           </Link>
-          <Link href={"/under-construction"}>
+          <Link href={"/staff"}>
             <li className="relative group">
               <Link
                 href={"/staff"}
