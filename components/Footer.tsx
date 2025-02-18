@@ -194,9 +194,11 @@ const Footer = () => {
                       </button>
                     </Link>
                     <span className="text-gray-600">•</span>
-                    <button className="text-gray-400 hover:text-white transition-colors">
-                      Server Rules
-                    </button>
+                    <Link href={"/rules"}>
+                      <button className="text-gray-400 hover:text-white transition-colors">
+                        Server Rules
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </DialogContent>

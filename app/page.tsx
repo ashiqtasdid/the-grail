@@ -11,9 +11,18 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const hasVisited = localStorage.getItem('hasVisited');
+    
+    if (hasVisited) {
+      setIsLoading(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
+      localStorage.setItem('hasVisited', 'true');
     }, 2000);
+
     return () => clearTimeout(timer);
   }, []);
 

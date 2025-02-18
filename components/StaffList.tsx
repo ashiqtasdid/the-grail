@@ -105,7 +105,7 @@ const StaffList = () => {
           {[...Array(9)].map((_, i) => (
             <div
               key={i}
-              className="w-16 h-16 bg-gray-700 animate-pulse rounded"
+              className="w-16 h-16 bg-red-700 animate-pulse rounded"
               style={{
                 animation: `pulse 1.5s ease-in-out ${i * 0.1}s infinite`,
               }}
