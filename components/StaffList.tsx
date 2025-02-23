@@ -37,6 +37,8 @@ const getRoleColor = (role: StaffRole): string => {
   switch (role) {
     case "Owner":
       return "#ff5757";
+    case "CO-Owner":
+      return "#ff5757";
     case "Admin":
       return "#ffa500";
     case "Developer":
@@ -57,31 +59,34 @@ const getCrafatarUrl = (uuid: string): string =>
 
 const STAFF_MEMBERS: Staff[] = [
   {
-    name: "TheOwner",
+    name: "Ultraviolenza",
     role: "Owner",
-    uuid: "8667ba71-b85a-4004-af54-457a9734eed7",
+    uuid: "ff7f2d29-f779-4b0d-84c7-8b06562e8d36",
+      discord: "Ultraviolenza#0000",
   },
   {
-    name: "MiniKloon",
-    role: "Admin",
-    uuid: "20934ef9-488c-4651-80a7-8f861586b4cf",
+    name: "Zeeryf",
+    role: "Owner",
+    uuid: "469ae12f-6bef-413e-82e3-01ab521d0a46",
+    discord: "Zeeryf",
   },
   {
-    name: "AshiqTasdid",
+    name: "Kqppa",
+    role: "Co-Owner",
+    uuid: "5e06223b-3dad-4791-bba9-dc87fdaabd8a",
+    discord: "kqppa.",
+  },
+  {
+    name: "iMagic142_",
     role: "Developer",
-    uuid: "7f894fdf-72a9-4125-90ad-458c334e5de3",
-    discord: "ashiqtasdid",
-    twitter: "TheAshiqTasdid",
+    uuid: "6fefba25-5413-4922-9d09-031b63edae0a",
+    discord: "kmagic.",
   },
   {
-    name: "FitMC",
-    role: "Moderator",
-    uuid: "a3be358a-966f-4043-bfab-2acbfe03e051",
-  },
-  {
-    name: "ThirtyVirus",
-    role: "Trial Moderator",
-    uuid: "c3b94027-47b1-433d-8b20-cd54c7da3f5d",
+    name: "Connor_IO",
+    role: "Admin",
+    uuid: "1e3b9b89-5910-47ad-9098-769c13bb4ddf",
+    discord: "connorpuntoio",
   },
 ];
 
