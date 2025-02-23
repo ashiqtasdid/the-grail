@@ -62,7 +62,7 @@ const STAFF_MEMBERS: Staff[] = [
     name: "Ultraviolenza",
     role: "Owner",
     uuid: "ff7f2d29-f779-4b0d-84c7-8b06562e8d36",
-      discord: "Ultraviolenza#0000",
+      discord: "Ultraviolenza0000",
   },
   {
     name: "Zeeryf",
