@@ -22,7 +22,6 @@ interface Staff {
   twitter?: string;
 }
 
-
 const ROLE_HIERARCHY: StaffRole[] = [
   "Owner",
   "Admin",
