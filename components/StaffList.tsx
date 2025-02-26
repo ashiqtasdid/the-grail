@@ -22,6 +22,7 @@ interface Staff {
   twitter?: string;
 }
 
+
 const ROLE_HIERARCHY: StaffRole[] = [
   "Owner",
   "Admin",
@@ -72,7 +73,7 @@ const STAFF_MEMBERS: Staff[] = [
   },
   {
     name: "Kqppa",
-    role: "Co-Owner",
+    role: "Owner",
     uuid: "5e06223b-3dad-4791-bba9-dc87fdaabd8a",
     discord: "kqppa.",
   },
