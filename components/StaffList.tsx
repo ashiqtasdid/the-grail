@@ -38,8 +38,6 @@ const getRoleColor = (role: StaffRole): string => {
   switch (role) {
     case "Owner":
       return "#ff5757";
-    case "Owner":
-      return "#ff5757";
     case "Admin":
       return "#ffa500";
     case "Developer":
