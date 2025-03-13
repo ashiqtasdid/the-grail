@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+// Mock
+
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
