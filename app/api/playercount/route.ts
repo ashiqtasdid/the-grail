@@ -1,7 +1,7 @@
 export async function GET() {
   try {
     const response = await fetch(
-      "https://api.mcsrvstat.us/2/mc.hypixel.net",
+      "https://api.mcsrvstat.us/2/eu.thegrail.vip",
       { next: { revalidate: 120 } } // Cache for 2 minutes
     );
     if (!response.ok) {
