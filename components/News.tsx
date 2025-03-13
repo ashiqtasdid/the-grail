@@ -1,5 +1,6 @@
 // components/News.tsx
 "use client";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface Post {
@@ -87,9 +88,11 @@ export default function News() {
                     )}
                   </div>
                   <div>
-                    <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl">
-                      Continue Reading
-                    </button>
+                    <Link href={`/news/${post.slug}`} className="inline-block">
+                      <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl hover:from-[#c41313] hover:to-[#a21010] transition-colors">
+                        Continue Reading
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -12,7 +12,7 @@ import Link from "next/link";
 const Footer = () => {
   const [copied, setCopied] = useState(false);
   const [playerCount, setPlayerCount] = useState({ current: 0, max: 0 });
-  const serverIP = "thegrail.vip";
+  const serverIP = "eu.thegrail.vip";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,7 +79,7 @@ const Footer = () => {
               </Link>
               <Link href={"/under-construction"}>
                 <li className="hover:text-gray-300 transition-colors duration-200 cursor-pointer text-gray-200">
-                  Twitter
+                  Tiktok
                 </li>
               </Link>
               <Link href={"/under-construction"}>
@@ -89,7 +89,7 @@ const Footer = () => {
               </Link>
               <Link href={"/under-construction"}>
                 <li className="hover:text-gray-300 transition-colors duration-200 cursor-pointer text-gray-200">
-                  Reddit
+                  YouTube
                 </li>
               </Link>
             </ul>
@@ -103,17 +103,17 @@ const Footer = () => {
                   Status
                 </li>
               </Link>
-              <Link href={"/under-construction"}>
+              <Link href={"/rules"}>
                 <li className="hover:text-gray-300 transition-colors duration-200 cursor-pointer text-gray-200">
                   Rules
                 </li>
               </Link>
-              <Link href={"/under-construction"}>
+              <Link href={"/#FAQ"}>
                 <li className="hover:text-gray-300 transition-colors duration-200 cursor-pointer text-gray-200">
                   FAQ
                 </li>
               </Link>
-              <Link href={"/under-construction"}>
+              <Link href={"https://discord.com/invite/EC3KUy6x9u"}>
                 <li className="hover:text-gray-300 transition-colors duration-200 cursor-pointer text-gray-200">
                   Support
                 </li>
@@ -183,7 +183,7 @@ const Footer = () => {
                     </div>
                     <div className="space-y-2">
                       <p className="text-gray-400">Region</p>
-                      <p className="text-white font-medium">North America</p>
+                      <p className="text-white font-medium">Europe</p>
                     </div>
                   </div>
                   {/* Quick Links */}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface Post {
@@ -77,9 +78,11 @@ export default function ArchivePage() {
                 {post.description && (
                   <p className="text-gray-100">{post.description}</p>
                 )}
-                <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl">
-                  Continue Reading
-                </button>
+                <Link href={`/blog/${post.slug}`}>
+                  <button className="bg-gradient-to-b from-[#AA1111] to-[#8a0e0e] px-4 py-2 rounded-xl">
+                    Continue Reading
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

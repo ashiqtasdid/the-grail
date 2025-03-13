@@ -1,41 +1,46 @@
-// app/api/all-news/route.ts
-
-import fs from "fs/promises";
-import path from "path";
-import matter from "gray-matter";
 import { NextResponse } from "next/server";
+import path from "path";
+import fs from "fs";
+import matter from "gray-matter";
 
 export async function GET() {
   try {
     const postsDirectory = path.join(process.cwd(), "posts");
-    const filenames = await fs.readdir(postsDirectory);
+    const fileNames = fs.readdirSync(postsDirectory);
 
-    const posts = await Promise.all(
-      filenames.map(async (filename) => {
-        const filePath = path.join(postsDirectory, filename);
-        const fileContents = await fs.readFile(filePath, "utf8");
+    const posts = fileNames
+      .filter(
+        (fileName) => fileName.endsWith(".mdx") || fileName.endsWith(".md")
+      )
+      .map((fileName) => {
+        const slug = fileName.replace(/\.mdx?$/, "");
+        const fullPath = path.join(postsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, "utf8");
         const { data } = matter(fileContents);
-        const slug = filename.replace(/\.mdx$/, "");
 
         return {
           slug,
-          title: data.title || "Untitled Post",
-          date: data.date || "",
-          author: data.author || "Unknown Author",
-          description: data.description || "",
+          title: data.title || slug,
+          date: data.date
+            ? new Date(data.date).toLocaleDateString()
+            : undefined,
+          author: data.author || undefined,
+          description: data.description || undefined,
         };
       })
-    );
-
-    posts.sort((a, b) => {
-      const dateA = a.date ? new Date(a.date).getTime() : 0;
-      const dateB = b.date ? new Date(b.date).getTime() : 0;
-      return dateB - dateA;
-    });
+      .sort((a, b) => {
+        if (a.date && b.date) {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+        return 0;
+      });
 
     return NextResponse.json(posts);
   } catch (error) {
-    console.error("Error reading posts:", error);
-    return NextResponse.error();
+    console.error("Error fetching blog posts:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch blog posts" },
+      { status: 500 }
+    );
   }
 }
